@@ -3,6 +3,7 @@ import { Value } from "./models/Value.js"
 import { EventEmitter } from "./utils/EventEmitter.js"
 import { isValidProp } from "./utils/IsValidProp.js"
 import { loadState } from "./utils/Store.js"
+import { Home } from "./models/Home.js"
 
 class ObservableAppState extends EventEmitter {
   page = ''
@@ -39,10 +40,34 @@ class ObservableAppState extends EventEmitter {
     }),
   ]
 
-  // NOTE Used to load initial data
+
+    // NOTE Used to load initial data
   init() {
     this.cars = loadState('cars', [Car])
   }
+
+  homes = [
+    new Home({
+      name: 'The Haunted Home',
+      age: 100,
+      bedrooms: 6,
+      bathrooms: 3,
+      sqft: 8000,
+      price: 6000000,
+      description: 'Though the previous owners died mysteriously, this is a lovely home! the price is, quite frankly, an absolute steal for such a high-quality luxury home',
+      image: 'https://images.unsplash.com/photo-1621620844255-4b0d09b12c3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhhdW50ZWQlMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    }),
+    new Home({
+      name: 'Flowerfield Cottage',
+      age: 10,
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 1500,
+      price: 150000,
+      description: 'A charming little family home perfect for small families. Lots of flowers, and the price is an absolute steal.',
+      image: 'https://images.unsplash.com/photo-1603862026184-14a7f7b91026?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y290dGFnZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    })
+  ]
 
 }
 
